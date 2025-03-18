@@ -1,5 +1,6 @@
 "use client";
 
+import Navbar from "@/components/navbar";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -32,35 +33,16 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center h-screen">
       {/* navbar */}
-      <div className="flex p-5 w-3/4  font-bold justify-between">
-        <Link href="/">Logo</Link>
-        <Link href="/quiz" className="">
-          Quiz
-        </Link>
-      </div>
-      {error && <h1 className="text-2xl text-red-500">Error</h1>}
-      {loading && <h1 className="text-2xl text-blue-500">Loading...</h1>}
-      {!loading && !error && (
-        <div className="flex flex-col h-screen w-3/4  pt-12">
-          <h1 className="flex justify-center mb-4 text-3xl font-extrabold">
-            Welcome to Quizy
-          </h1>
-          {/* card */}
-          <div className="flex h-screen p-4">
-            <div className="grid grid-cols-4 gap-4 w-full">
-              {characters.map((character) => (
-                <div key={character.id} className="">
-                  <Image
-                    src={character.avatar}
-                    alt={character.name}
-                    height={200}
-                    width={200} />
-                </div>
-              ))}
-            </div>
-          </div>
+      <Navbar />
+
+      <div className="flex flex-col h-screen text-white w-3/4 items-center justify-center">
+        <h1 className="text-4xl mb-5">Welcome to Quizy</h1>
+        <div>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <Link href="/characters">See Characters</Link>
+          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 }
